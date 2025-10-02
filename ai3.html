@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Car Bazaar by Krishna</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f8ff;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      background-color: #0077cc;
+      color: white;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    .login-box {
+      max-width: 400px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 1em;
+    }
+    #carSection {
+      display: none;
+      padding: 20px;
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .controls input, .controls select {
+      flex: 1;
+      margin: 5px;
+      padding: 10px;
+    }
+    .car-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .car-card {
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .car-card:hover {
+      transform: scale(1.05);
+    }
+    .car-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .dark-mode {
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+    .dark-mode .car-card {
+      background-color: #1e1e1e;
+      border-color: #444;
+    }
+    .dark-toggle {
+      margin: 10px auto;
+      display: block;
+      padding: 10px;
+      background: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🚗 Car Bazaar by Krishna Sharma</h1>
+    <p>Class 12th C | IIT College | Contact: 0000000000</p>
+  </header>
+
+  <div class="login-box">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Enter your name" required />
+    <input type="password" id="password" placeholder="Enter password" required />
+    <label><input type="checkbox" id="terms" /> I accept terms and policy</label>
+    <button onclick="login()">Log in</button>
+  </div>
+
+  <button class="dark-toggle" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+
+  <div id="carSection">
+    <div class="controls">
+      <input type="text" id="searchInput" placeholder="Search car by name..." oninput="filterCars()" />
+      <select id="priceFilter" onchange="filterCars()">
+        <option value="">Filter by price</option>
+        <option value="1">Under ₹1 Crore</option>
+        <option value="5">Under ₹5 Crore</option>
+        <option value="10">Under ₹10 Crore</option>
+      </select>
+    </div>
+
+    <div class="car-grid" id="carGrid">
+      <div class="car-card" data-name="Lamborghini" data-price="4.99">
+        <img src="ram.png" alt="Lamborghini" />
+        <h3>Lamborghini</h3>
+        <p>₹4.99 Crore</p>
+      </div>
+      <div class="car-card" data-name="Ferrari" data-price="3.75">
+        <img src="ferrari.png" alt="Ferrari" />
+        <h3>Ferrari</h3>
+        <p>₹3.75 Crore</p>
+      </div>
+      <div class="car-card" data-name="Mustang" data-price="0.85">
+        <img src="mustang.png" alt="Mustang" />
+        <h3>Ford Mustang</h3>
+        <p>₹85 Lakh</p>
+      </div>
+      <div class="car-card" data-name="Bugatti" data-price="9.99">
+        <img src="bugatti.png" alt="Bugatti" />
+        <h3>Bugatti</h3>
+        <p>₹9.99 Crore</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      const name = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      const terms = document.getElementById("terms").checked;
+
+      if (name && pass && terms) {
+        document.getElementById("carSection").style.display = "block";
+        document.querySelector(".login-box").style.display = "none";
+        alert("Login successful!");
+      } else {
+        alert("Please fill all fields and accept terms.");
+      }
+    }
+
+    function filterCars() {
+      const search = document.getElementById("searchInput").value.toLowerCase();
+      const priceLimit = document.getElementById("priceFilter").value;
+      const cards = document.querySelectorAll(".car-card");
+
+      cards.forEach(card => {
+        const name = card.dataset.name.toLowerCase();
+        const price = parseFloat(card.dataset.price);
+        const matchesName = name.includes(search);
+        const matchesPrice = !priceLimit || price <= parseFloat(priceLimit);
+        card.style.display = (matchesName && matchesPrice) ? "block" : "none";
+      });
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
+
+</body>
+</html>
