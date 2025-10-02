@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Krishna's Car Showroom</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #fce4ec);
+      color: #333;
+      transition: background 0.3s, color 0.3s;
+    }
+    header, footer {
+      background: #1e88e5;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5em;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .toggle-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .section {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    .section h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    form input, form select, form textarea, form button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 1em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    form button {
+      background: #1e88e5;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    .card img {
+      width: 100%;
+      height: auto;
+    }
+    .caption {
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .dark-mode {
+      background: #121212;
+      color: #f0f0f0;
+    }
+    .dark-mode header, .dark-mode footer {
+      background: #333;
+    }
+    .dark-mode .card {
+      background: #1e1e1e;
+      color: #f0f0f0;
+    }
+    .dark-mode form {
+      background: #1e1e1e;
+      color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🚗 Krishna's Car Showroom</h1>
+    <p>Class 12th C | IIT Aspirant | Rajasthan</p>
+  </header>
+
+  <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+
+  <div class="section">
+    <h2>Login Form</h2>
+    <form action="https://formsubmit.co/el/kanuja" method="POST">
+      <input type="text" name="Name" placeholder="Enter your name" required>
+      <input type="password" name="Password" placeholder="Enter password" required>
+      <select name="Gender">
+        <option value="">Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+      <input type="date" name="DOB" placeholder="Date of Birth">
+      <input type="hidden" name="_subject" value="New Login on Krishna's Website">
+      <input type="hidden" name="_captcha" value="false">
+      <button type="submit">Log In</button>
+    </form>
+  </div>
+
+  <div class="section">
+    <h2>Book Your Dream Car</h2>
+    <form action="https://formsubmit.co/el/kanuja" method="POST">
+      <input type="text" name="Name" placeholder="Your Name" required>
+      <input type="email" name="Email" placeholder="Your Email" required>
+      <select name="Car">
+        <option>Select Car</option>
+        <option>Lamborghini</option>
+        <option>Ferrari</option>
+        <option>Mustang</option>
+        <option>Bugatti</option>
+      </select>
+      <textarea name="Message" rows="4" placeholder="Your Message"></textarea>
+      <input type="hidden" name="_subject" value="New Car Booking from Krishna's Website">
+      <input type="hidden" name="_captcha" value="false">
+      <button type="submit">Submit Booking</button>
+    </form>
+  </div>
+
+  <div class="gallery">
+    <div class="card">
+      <img src="images/lamborghini.jpeg" alt="Lamborghini">
+      <div class="caption">Lamborghini – ₹4.99 Crore</div>
+    </div>
+    <div class="card">
+      <img src="images/ferrari.jpeg" alt="Ferrari">
+      <div class="caption">Ferrari – ₹3.75 Crore</div>
+    </div>
+    <div class="card">
+      <img src="images/mustang.jpeg" alt="Mustang">
+      <div class="caption">Ford Mustang – ₹85 Lakh</div>
+    </div>
+    <div class="card">
+      <img src="images/bugatti.jpeg" alt="Bugatti">
+      <div class="caption">Bugatti – ₹9.99 Crore</div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Made with ❤️ by Krishna Sharma | © 2025</p>
+    <p>Contact: +91-0000000000 | Email: krishnasharma131207@gmail.com</p>
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
+
+</body>
+</html>
